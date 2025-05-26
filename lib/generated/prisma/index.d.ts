@@ -40,6 +40,37 @@ export type CoverLetter = $Result.DefaultSelection<Prisma.$CoverLetterPayload>
 export type IndustryInsight = $Result.DefaultSelection<Prisma.$IndustryInsightPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const DemandLevel: {
+  HIGH: 'HIGH',
+  MEDIUM: 'MEDIUM',
+  LOW: 'LOW'
+};
+
+export type DemandLevel = (typeof DemandLevel)[keyof typeof DemandLevel]
+
+
+export const MarketOutlook: {
+  POSITIVE: 'POSITIVE',
+  NEUTRAL: 'NEUTRAL',
+  NEGATIVE: 'NEGATIVE'
+};
+
+export type MarketOutlook = (typeof MarketOutlook)[keyof typeof MarketOutlook]
+
+}
+
+export type DemandLevel = $Enums.DemandLevel
+
+export const DemandLevel: typeof $Enums.DemandLevel
+
+export type MarketOutlook = $Enums.MarketOutlook
+
+export const MarketOutlook: typeof $Enums.MarketOutlook
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -271,8 +302,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 6.8.2
+   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
    */
   export type PrismaVersion = {
     client: string
@@ -5948,8 +5979,8 @@ export namespace Prisma {
     id: string | null
     industry: string | null
     growthRate: number | null
-    demandLevel: string | null
-    marketOutlook: string | null
+    demandLevel: $Enums.DemandLevel | null
+    marketOutlook: $Enums.MarketOutlook | null
     lastUpdated: Date | null
     nextUpdate: Date | null
   }
@@ -5958,8 +5989,8 @@ export namespace Prisma {
     id: string | null
     industry: string | null
     growthRate: number | null
-    demandLevel: string | null
-    marketOutlook: string | null
+    demandLevel: $Enums.DemandLevel | null
+    marketOutlook: $Enums.MarketOutlook | null
     lastUpdated: Date | null
     nextUpdate: Date | null
   }
@@ -6114,9 +6145,9 @@ export namespace Prisma {
     industry: string
     salaryRanges: JsonValue[]
     growthRate: number
-    demandLevel: string
+    demandLevel: $Enums.DemandLevel
     topSkills: string[]
-    marketOutlook: string
+    marketOutlook: $Enums.MarketOutlook
     keyTrends: string[]
     recommendedSkills: string[]
     lastUpdated: Date
@@ -6218,9 +6249,9 @@ export namespace Prisma {
       industry: string
       salaryRanges: Prisma.JsonValue[]
       growthRate: number
-      demandLevel: string
+      demandLevel: $Enums.DemandLevel
       topSkills: string[]
-      marketOutlook: string
+      marketOutlook: $Enums.MarketOutlook
       keyTrends: string[]
       recommendedSkills: string[]
       lastUpdated: Date
@@ -6653,9 +6684,9 @@ export namespace Prisma {
     readonly industry: FieldRef<"IndustryInsight", 'String'>
     readonly salaryRanges: FieldRef<"IndustryInsight", 'Json[]'>
     readonly growthRate: FieldRef<"IndustryInsight", 'Float'>
-    readonly demandLevel: FieldRef<"IndustryInsight", 'String'>
+    readonly demandLevel: FieldRef<"IndustryInsight", 'DemandLevel'>
     readonly topSkills: FieldRef<"IndustryInsight", 'String[]'>
-    readonly marketOutlook: FieldRef<"IndustryInsight", 'String'>
+    readonly marketOutlook: FieldRef<"IndustryInsight", 'MarketOutlook'>
     readonly keyTrends: FieldRef<"IndustryInsight", 'String[]'>
     readonly recommendedSkills: FieldRef<"IndustryInsight", 'String[]'>
     readonly lastUpdated: FieldRef<"IndustryInsight", 'DateTime'>
@@ -7277,6 +7308,34 @@ export namespace Prisma {
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
+
+
+  /**
+   * Reference to a field of type 'DemandLevel'
+   */
+  export type EnumDemandLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DemandLevel'>
+    
+
+
+  /**
+   * Reference to a field of type 'DemandLevel[]'
+   */
+  export type ListEnumDemandLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DemandLevel[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'MarketOutlook'
+   */
+  export type EnumMarketOutlookFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MarketOutlook'>
+    
+
+
+  /**
+   * Reference to a field of type 'MarketOutlook[]'
+   */
+  export type ListEnumMarketOutlookFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MarketOutlook[]'>
+    
   /**
    * Deep Input Types
    */
@@ -7600,9 +7659,9 @@ export namespace Prisma {
     industry?: StringFilter<"IndustryInsight"> | string
     salaryRanges?: JsonNullableListFilter<"IndustryInsight">
     growthRate?: FloatFilter<"IndustryInsight"> | number
-    demandLevel?: StringFilter<"IndustryInsight"> | string
+    demandLevel?: EnumDemandLevelFilter<"IndustryInsight"> | $Enums.DemandLevel
     topSkills?: StringNullableListFilter<"IndustryInsight">
-    marketOutlook?: StringFilter<"IndustryInsight"> | string
+    marketOutlook?: EnumMarketOutlookFilter<"IndustryInsight"> | $Enums.MarketOutlook
     keyTrends?: StringNullableListFilter<"IndustryInsight">
     recommendedSkills?: StringNullableListFilter<"IndustryInsight">
     lastUpdated?: DateTimeFilter<"IndustryInsight"> | Date | string
@@ -7633,9 +7692,9 @@ export namespace Prisma {
     NOT?: IndustryInsightWhereInput | IndustryInsightWhereInput[]
     salaryRanges?: JsonNullableListFilter<"IndustryInsight">
     growthRate?: FloatFilter<"IndustryInsight"> | number
-    demandLevel?: StringFilter<"IndustryInsight"> | string
+    demandLevel?: EnumDemandLevelFilter<"IndustryInsight"> | $Enums.DemandLevel
     topSkills?: StringNullableListFilter<"IndustryInsight">
-    marketOutlook?: StringFilter<"IndustryInsight"> | string
+    marketOutlook?: EnumMarketOutlookFilter<"IndustryInsight"> | $Enums.MarketOutlook
     keyTrends?: StringNullableListFilter<"IndustryInsight">
     recommendedSkills?: StringNullableListFilter<"IndustryInsight">
     lastUpdated?: DateTimeFilter<"IndustryInsight"> | Date | string
@@ -7670,9 +7729,9 @@ export namespace Prisma {
     industry?: StringWithAggregatesFilter<"IndustryInsight"> | string
     salaryRanges?: JsonNullableListFilter<"IndustryInsight">
     growthRate?: FloatWithAggregatesFilter<"IndustryInsight"> | number
-    demandLevel?: StringWithAggregatesFilter<"IndustryInsight"> | string
+    demandLevel?: EnumDemandLevelWithAggregatesFilter<"IndustryInsight"> | $Enums.DemandLevel
     topSkills?: StringNullableListFilter<"IndustryInsight">
-    marketOutlook?: StringWithAggregatesFilter<"IndustryInsight"> | string
+    marketOutlook?: EnumMarketOutlookWithAggregatesFilter<"IndustryInsight"> | $Enums.MarketOutlook
     keyTrends?: StringNullableListFilter<"IndustryInsight">
     recommendedSkills?: StringNullableListFilter<"IndustryInsight">
     lastUpdated?: DateTimeWithAggregatesFilter<"IndustryInsight"> | Date | string
@@ -8021,9 +8080,9 @@ export namespace Prisma {
     industry: string
     salaryRanges?: IndustryInsightCreatesalaryRangesInput | InputJsonValue[]
     growthRate: number
-    demandLevel: string
+    demandLevel: $Enums.DemandLevel
     topSkills?: IndustryInsightCreatetopSkillsInput | string[]
-    marketOutlook: string
+    marketOutlook: $Enums.MarketOutlook
     keyTrends?: IndustryInsightCreatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightCreaterecommendedSkillsInput | string[]
     lastUpdated?: Date | string
@@ -8036,9 +8095,9 @@ export namespace Prisma {
     industry: string
     salaryRanges?: IndustryInsightCreatesalaryRangesInput | InputJsonValue[]
     growthRate: number
-    demandLevel: string
+    demandLevel: $Enums.DemandLevel
     topSkills?: IndustryInsightCreatetopSkillsInput | string[]
-    marketOutlook: string
+    marketOutlook: $Enums.MarketOutlook
     keyTrends?: IndustryInsightCreatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightCreaterecommendedSkillsInput | string[]
     lastUpdated?: Date | string
@@ -8051,9 +8110,9 @@ export namespace Prisma {
     industry?: StringFieldUpdateOperationsInput | string
     salaryRanges?: IndustryInsightUpdatesalaryRangesInput | InputJsonValue[]
     growthRate?: FloatFieldUpdateOperationsInput | number
-    demandLevel?: StringFieldUpdateOperationsInput | string
+    demandLevel?: EnumDemandLevelFieldUpdateOperationsInput | $Enums.DemandLevel
     topSkills?: IndustryInsightUpdatetopSkillsInput | string[]
-    marketOutlook?: StringFieldUpdateOperationsInput | string
+    marketOutlook?: EnumMarketOutlookFieldUpdateOperationsInput | $Enums.MarketOutlook
     keyTrends?: IndustryInsightUpdatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightUpdaterecommendedSkillsInput | string[]
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8066,9 +8125,9 @@ export namespace Prisma {
     industry?: StringFieldUpdateOperationsInput | string
     salaryRanges?: IndustryInsightUpdatesalaryRangesInput | InputJsonValue[]
     growthRate?: FloatFieldUpdateOperationsInput | number
-    demandLevel?: StringFieldUpdateOperationsInput | string
+    demandLevel?: EnumDemandLevelFieldUpdateOperationsInput | $Enums.DemandLevel
     topSkills?: IndustryInsightUpdatetopSkillsInput | string[]
-    marketOutlook?: StringFieldUpdateOperationsInput | string
+    marketOutlook?: EnumMarketOutlookFieldUpdateOperationsInput | $Enums.MarketOutlook
     keyTrends?: IndustryInsightUpdatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightUpdaterecommendedSkillsInput | string[]
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8081,9 +8140,9 @@ export namespace Prisma {
     industry: string
     salaryRanges?: IndustryInsightCreatesalaryRangesInput | InputJsonValue[]
     growthRate: number
-    demandLevel: string
+    demandLevel: $Enums.DemandLevel
     topSkills?: IndustryInsightCreatetopSkillsInput | string[]
-    marketOutlook: string
+    marketOutlook: $Enums.MarketOutlook
     keyTrends?: IndustryInsightCreatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightCreaterecommendedSkillsInput | string[]
     lastUpdated?: Date | string
@@ -8095,9 +8154,9 @@ export namespace Prisma {
     industry?: StringFieldUpdateOperationsInput | string
     salaryRanges?: IndustryInsightUpdatesalaryRangesInput | InputJsonValue[]
     growthRate?: FloatFieldUpdateOperationsInput | number
-    demandLevel?: StringFieldUpdateOperationsInput | string
+    demandLevel?: EnumDemandLevelFieldUpdateOperationsInput | $Enums.DemandLevel
     topSkills?: IndustryInsightUpdatetopSkillsInput | string[]
-    marketOutlook?: StringFieldUpdateOperationsInput | string
+    marketOutlook?: EnumMarketOutlookFieldUpdateOperationsInput | $Enums.MarketOutlook
     keyTrends?: IndustryInsightUpdatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightUpdaterecommendedSkillsInput | string[]
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8109,9 +8168,9 @@ export namespace Prisma {
     industry?: StringFieldUpdateOperationsInput | string
     salaryRanges?: IndustryInsightUpdatesalaryRangesInput | InputJsonValue[]
     growthRate?: FloatFieldUpdateOperationsInput | number
-    demandLevel?: StringFieldUpdateOperationsInput | string
+    demandLevel?: EnumDemandLevelFieldUpdateOperationsInput | $Enums.DemandLevel
     topSkills?: IndustryInsightUpdatetopSkillsInput | string[]
-    marketOutlook?: StringFieldUpdateOperationsInput | string
+    marketOutlook?: EnumMarketOutlookFieldUpdateOperationsInput | $Enums.MarketOutlook
     keyTrends?: IndustryInsightUpdatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightUpdaterecommendedSkillsInput | string[]
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8513,6 +8572,20 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumDemandLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.DemandLevel | EnumDemandLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.DemandLevel[] | ListEnumDemandLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DemandLevel[] | ListEnumDemandLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumDemandLevelFilter<$PrismaModel> | $Enums.DemandLevel
+  }
+
+  export type EnumMarketOutlookFilter<$PrismaModel = never> = {
+    equals?: $Enums.MarketOutlook | EnumMarketOutlookFieldRefInput<$PrismaModel>
+    in?: $Enums.MarketOutlook[] | ListEnumMarketOutlookFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MarketOutlook[] | ListEnumMarketOutlookFieldRefInput<$PrismaModel>
+    not?: NestedEnumMarketOutlookFilter<$PrismaModel> | $Enums.MarketOutlook
+  }
+
   export type UserListRelationFilter = {
     every?: UserWhereInput
     some?: UserWhereInput
@@ -8563,6 +8636,26 @@ export namespace Prisma {
 
   export type IndustryInsightSumOrderByAggregateInput = {
     growthRate?: SortOrder
+  }
+
+  export type EnumDemandLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DemandLevel | EnumDemandLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.DemandLevel[] | ListEnumDemandLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DemandLevel[] | ListEnumDemandLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumDemandLevelWithAggregatesFilter<$PrismaModel> | $Enums.DemandLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDemandLevelFilter<$PrismaModel>
+    _max?: NestedEnumDemandLevelFilter<$PrismaModel>
+  }
+
+  export type EnumMarketOutlookWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MarketOutlook | EnumMarketOutlookFieldRefInput<$PrismaModel>
+    in?: $Enums.MarketOutlook[] | ListEnumMarketOutlookFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MarketOutlook[] | ListEnumMarketOutlookFieldRefInput<$PrismaModel>
+    not?: NestedEnumMarketOutlookWithAggregatesFilter<$PrismaModel> | $Enums.MarketOutlook
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMarketOutlookFilter<$PrismaModel>
+    _max?: NestedEnumMarketOutlookFilter<$PrismaModel>
   }
 
   export type UserCreateskillsInput = {
@@ -8828,9 +8921,17 @@ export namespace Prisma {
     push?: InputJsonValue | InputJsonValue[]
   }
 
+  export type EnumDemandLevelFieldUpdateOperationsInput = {
+    set?: $Enums.DemandLevel
+  }
+
   export type IndustryInsightUpdatetopSkillsInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type EnumMarketOutlookFieldUpdateOperationsInput = {
+    set?: $Enums.MarketOutlook
   }
 
   export type IndustryInsightUpdatekeyTrendsInput = {
@@ -9050,14 +9151,48 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumDemandLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.DemandLevel | EnumDemandLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.DemandLevel[] | ListEnumDemandLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DemandLevel[] | ListEnumDemandLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumDemandLevelFilter<$PrismaModel> | $Enums.DemandLevel
+  }
+
+  export type NestedEnumMarketOutlookFilter<$PrismaModel = never> = {
+    equals?: $Enums.MarketOutlook | EnumMarketOutlookFieldRefInput<$PrismaModel>
+    in?: $Enums.MarketOutlook[] | ListEnumMarketOutlookFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MarketOutlook[] | ListEnumMarketOutlookFieldRefInput<$PrismaModel>
+    not?: NestedEnumMarketOutlookFilter<$PrismaModel> | $Enums.MarketOutlook
+  }
+
+  export type NestedEnumDemandLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DemandLevel | EnumDemandLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.DemandLevel[] | ListEnumDemandLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DemandLevel[] | ListEnumDemandLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumDemandLevelWithAggregatesFilter<$PrismaModel> | $Enums.DemandLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDemandLevelFilter<$PrismaModel>
+    _max?: NestedEnumDemandLevelFilter<$PrismaModel>
+  }
+
+  export type NestedEnumMarketOutlookWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MarketOutlook | EnumMarketOutlookFieldRefInput<$PrismaModel>
+    in?: $Enums.MarketOutlook[] | ListEnumMarketOutlookFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MarketOutlook[] | ListEnumMarketOutlookFieldRefInput<$PrismaModel>
+    not?: NestedEnumMarketOutlookWithAggregatesFilter<$PrismaModel> | $Enums.MarketOutlook
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMarketOutlookFilter<$PrismaModel>
+    _max?: NestedEnumMarketOutlookFilter<$PrismaModel>
+  }
+
   export type IndustryInsightCreateWithoutUsersInput = {
     id?: string
     industry: string
     salaryRanges?: IndustryInsightCreatesalaryRangesInput | InputJsonValue[]
     growthRate: number
-    demandLevel: string
+    demandLevel: $Enums.DemandLevel
     topSkills?: IndustryInsightCreatetopSkillsInput | string[]
-    marketOutlook: string
+    marketOutlook: $Enums.MarketOutlook
     keyTrends?: IndustryInsightCreatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightCreaterecommendedSkillsInput | string[]
     lastUpdated?: Date | string
@@ -9069,9 +9204,9 @@ export namespace Prisma {
     industry: string
     salaryRanges?: IndustryInsightCreatesalaryRangesInput | InputJsonValue[]
     growthRate: number
-    demandLevel: string
+    demandLevel: $Enums.DemandLevel
     topSkills?: IndustryInsightCreatetopSkillsInput | string[]
-    marketOutlook: string
+    marketOutlook: $Enums.MarketOutlook
     keyTrends?: IndustryInsightCreatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightCreaterecommendedSkillsInput | string[]
     lastUpdated?: Date | string
@@ -9184,9 +9319,9 @@ export namespace Prisma {
     industry?: StringFieldUpdateOperationsInput | string
     salaryRanges?: IndustryInsightUpdatesalaryRangesInput | InputJsonValue[]
     growthRate?: FloatFieldUpdateOperationsInput | number
-    demandLevel?: StringFieldUpdateOperationsInput | string
+    demandLevel?: EnumDemandLevelFieldUpdateOperationsInput | $Enums.DemandLevel
     topSkills?: IndustryInsightUpdatetopSkillsInput | string[]
-    marketOutlook?: StringFieldUpdateOperationsInput | string
+    marketOutlook?: EnumMarketOutlookFieldUpdateOperationsInput | $Enums.MarketOutlook
     keyTrends?: IndustryInsightUpdatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightUpdaterecommendedSkillsInput | string[]
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9198,9 +9333,9 @@ export namespace Prisma {
     industry?: StringFieldUpdateOperationsInput | string
     salaryRanges?: IndustryInsightUpdatesalaryRangesInput | InputJsonValue[]
     growthRate?: FloatFieldUpdateOperationsInput | number
-    demandLevel?: StringFieldUpdateOperationsInput | string
+    demandLevel?: EnumDemandLevelFieldUpdateOperationsInput | $Enums.DemandLevel
     topSkills?: IndustryInsightUpdatetopSkillsInput | string[]
-    marketOutlook?: StringFieldUpdateOperationsInput | string
+    marketOutlook?: EnumMarketOutlookFieldUpdateOperationsInput | $Enums.MarketOutlook
     keyTrends?: IndustryInsightUpdatekeyTrendsInput | string[]
     recommendedSkills?: IndustryInsightUpdaterecommendedSkillsInput | string[]
     lastUpdated?: DateTimeFieldUpdateOperationsInput | Date | string
